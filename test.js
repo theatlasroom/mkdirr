@@ -3,16 +3,11 @@ const fs = require('fs')
 
 const mkdirr = require('./index')
 const flat = 'flat'
-const nested = 'nested/some/path'
 
 function exists (path) { return fs.existsSync(path) }
-function cleanup () {
-  [flat, nested].forEach((p) => {
-    if (exists(p)) fs.rmdirSync(p)
-  })
+function cleanup (path) {
+  fs.rmdirSync(path)
 }
-
-cleanup()
 
 tape('exports a single function', (t) => {
   t.equals(typeof mkdirr.build, 'function')
@@ -23,16 +18,18 @@ tape('create a single dir', (t) => {
   t.notOk(exists(flat))
   mkdirr.build(flat)
   t.ok(exists(flat))
+  cleanup(flat)
   t.end()
-
-  cleanup()
 })
 
 tape('create a single directory', (t) => {
+  const nested = 'nested/some/path'
   t.notOk(exists(nested))
   mkdirr.build(nested)
   t.ok(exists(nested))
+  // TODO: recursive rmdir 😂
+  cleanup('nested/some/path')
+  cleanup('nested/some')
+  cleanup('nested')
   t.end()
-
-  cleanup()
 })

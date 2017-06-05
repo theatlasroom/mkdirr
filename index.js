@@ -1,8 +1,3 @@
-const mkdirr = require('./src/mkdirr')
-
-// const targetPath = 'data/some/path'
-// mkdirr.make(targetPath)
-
 const fs = require('fs')
 const path = require('path')
 
