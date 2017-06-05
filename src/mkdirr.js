@@ -17,7 +17,7 @@ function build(targetPath){
     return;
   }
 
-  let p = (path.isAbsolute(targetPath)) ? path.sep : __dirname;
+  let p = (path.isAbsolute(targetPath)) ? path.sep : '';
 
 
   while (chunks && chunks.length){
