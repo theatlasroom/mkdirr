@@ -1,13 +1,12 @@
 const tape = require('tape')
 const fs = require('fs')
-const testDir = './data'
 
-const mkdirr = require('./src/mkdirr')
+const mkdirr = require('./index')
 const flat = 'flat'
-const nested  = 'nested/some/path'
+const nested = 'nested/some/path'
 
-function exists(path){ return fs.existsSync(path) }
-function cleanup(){
+function exists (path) { return fs.existsSync(path) }
+function cleanup () {
   [flat, nested].forEach((p) => {
     if (exists(p)) fs.rmdirSync(p)
   })
@@ -15,7 +14,12 @@ function cleanup(){
 
 cleanup()
 
-tape('error if there is no path specified', (t) => {
+tape('exports a single function', (t) => {
+  t.equals(typeof mkdirr.build, 'function')
+  t.end()
+});
+
+tape('create a single dir', (t) => {
   t.notOk(exists(flat))
   mkdirr.build(flat)
   t.ok(exists(flat))
@@ -31,4 +35,4 @@ tape('create a single directory', (t) => {
   t.end()
 
   cleanup()
-});
+})

@@ -1,10 +1,30 @@
 {
-  "name": "mkdir-deep",
+  "name": "mkdirr",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "description": "Recursive mkdir function",
-  "dependencies": {
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theatlasroom/mkdirr.git"
+  },
+  "bugs": {
+    "url": "https://github.com/theatlasroom/mkdirr/issues"
+  },
+  "scripts": {
+    "test": "tape test.js | tap-dot ",
+    "lint": "standard *.js --fix"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2",
+    "tap-dot": "^1.0.5",
     "tape": "^4.6.3"
-  }
+  },
+  "author": "Ezekiel <@theatlasroom>",
+  "keywords": [
+    "mkdir",
+    "nested",
+    "deep",
+    "recursive"
+  ]
 }
