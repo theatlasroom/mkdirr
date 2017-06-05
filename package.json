@@ -1,0 +1,9 @@
+{
+  "name": "mkdir-deep",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "tape": "^4.6.3"
+  }
+}
